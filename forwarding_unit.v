@@ -31,8 +31,8 @@ always @(*)
 				forward_B_mux <= 2'b01;
 		else
 			forward_A_mux <= 2'b00;
-			forward_B_mux <= 2'b00;			
-
+			forward_B_mux <= 2'b00;		
+			
 	// for hazard in case of load immidiately followed by store
 	/* this need additional mux at the dataWrite input of Data Memory to select
 	   data directly when no hazard(forward_C_mux = 0) 
@@ -47,7 +47,6 @@ always @(*)
 		else
 			forward_C_mux <= 1'b0;				
 				
-							
 				
 				
 end				
