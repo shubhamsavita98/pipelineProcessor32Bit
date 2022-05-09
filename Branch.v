@@ -1,9 +1,9 @@
 
-module Branch(PCSrc, Br, Zero)
+module Branch(PCSrc, Br, Zero);
 
 output PCSrc;
 input Br, Zero;
 
-PCSrc = Br & Zero;
+assign PCSrc = Br & Zero;
 
 endmodule 

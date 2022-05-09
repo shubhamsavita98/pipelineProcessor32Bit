@@ -1,9 +1,9 @@
 
-module shift(signextend, signextendshift)
+module shift(signextend, signextendshift);
 
 input signextend;
 output signextendshift;
 
-signextendshift = signextend << 2;
+assign signextendshift = signextend << 2;
 
 endmodule 
