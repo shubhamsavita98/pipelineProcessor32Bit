@@ -1,5 +1,5 @@
 
-module EXstage(clk, rst, data1, Write_Data, data2, sign_extend, EX, Rs, Rt, Rd, Wb, MemR, MemW, Branch,
+module EXstage(clk, rst, data1, Write_Data, data2, sign_extend, EX, Rs, Rt, Rd, Wb, MemR, MemW,
 		Mem_WB, read_En, write_En, DataAddress, WriteData, dest);
 
 input clk, rst;

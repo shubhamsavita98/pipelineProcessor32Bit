@@ -25,7 +25,7 @@ Next_Address_out, Instruction_out);
 
 IDstage(clk, reset, Instruction, Write_Register, RegWrite, Next_Address, Write_Data,
 Branch_Address, PCWrite, freeze, MemR, MemW, Ex, Wb, Rs, Rt, Rd, sign_extend,
-data1, data2, PCSrc);
+data1, data2, PCSrc, flush);
 
 EXstage(clk, reset, data1, Write_Data, data2, sign_extend, EX, Rs, Rt, Rd, Wb, MemR, MemW,
 Mem_WB, read_En, write_En, DataAddress, WriteData, dest);
