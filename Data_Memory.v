@@ -11,6 +11,7 @@ module Data_Memory(clk, rst, writeEn, readEn, address, WriteData, ReadData);
   if (rst)
 		for (i = 0; i < 1024; i = i + 1)
       dataMem[i] <= 0;
+  end 
 
   always @(address)
     begin
