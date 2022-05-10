@@ -20,19 +20,19 @@ wire [4:0] dest;
 // MEM wires
 wire [31:0] Write_Data;
 
-IFstage(clk, reset, PCWrite, hzdetect, Branch_Address, PCSrc, flush, freeze, 
+IFstage ifs(clk, reset, PCWrite, hzdetect, Branch_Address, PCSrc, flush, freeze, 
 Next_Address_out, Instruction_out);
 
-IDstage(clk, reset, Instruction, Write_Register, RegWrite, Next_Address, Write_Data,
+IDstage ids(clk, reset, Instruction, Write_Register, RegWrite, Next_Address_out, Write_Data,
 Branch_Address, PCWrite, freeze, MemR, MemW, Ex, Wb, Rs, Rt, Rd, sign_extend,
 data1, data2, PCSrc, flush);
 
-EXstage(clk, reset, data1, Write_Data, data2, sign_extend, EX, Rs, Rt, Rd, Wb, MemR, MemW,
+EXstage exs(clk, reset, data1, Write_Data, data2, sign_extend, EX, Rs, Rt, Rd, Wb, MemR, MemW,
 Mem_WB, read_En, write_En, DataAddress, WriteData, dest);
 
-MEMstage(clk, reset, write_En, read_En, DataAddress, WriteData, Mem_WB, dest,
+MEMstage mems(clk, reset, write_En, read_En, DataAddress, WriteData, Mem_WB, dest,
 WB_Address, WB_Data, Write_Register, WB);
 
-WBstage(WB, WB_Data, WB_Address, Write_Data);
+WBstage wbs(WB, WB_Data, WB_Address, Write_Data);
 
 endmodule
