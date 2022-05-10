@@ -22,7 +22,7 @@ always @(*) begin
 		6'b000000: begin // R type instruction
 			wb = 2'b10;
 			m = 3'b000;
-			ex = 4'b1100; 
+			ex = 4'b1100; // 1101
 			end
 			
 		6'b100011: begin // lw type instruction
@@ -41,6 +41,12 @@ always @(*) begin
 			wb = 2'b00;
 			m = 3'b100;
 			ex = 4'b0010; 
+			end
+
+		6'b001000: begin // R type instruction
+			wb = 2'b10;
+			m = 3'b000;
+			ex = 4'b1101;
 			end
 	endcase 
 end 

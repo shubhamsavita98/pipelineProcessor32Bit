@@ -35,8 +35,8 @@ mux o(Rt, Rd, EX[3], destIn);
 
 forwarding_unit p(forward_A_mux, forward_B_mux, forward_C_mux, Rs, Rt, dest, Write_Register, Mem_WB[1], RegWrite, MemW);
 
-EXE2MEM q(clk, rst, Wb, MemR, MemW, Branch, Address, ZeroFlag, data2, destIn,
-Mem_WB, read_En, write_En, Mem_Br, DataAddress, Zero, WriteData, dest);
+EXE2MEM q(clk, rst, Wb, MemR, MemW, Address, data2, destIn, Zeroflag, Branch
+Mem_WB, read_En, write_En, Zero, Mem_Br, DataAddress, WriteData, dest);
 
 assign dataAddress = DataAddress;
 
