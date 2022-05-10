@@ -1,11 +1,11 @@
 module MEM2WB (clk, rst, WB_EN_IN, MEM_R_EN_IN, ALUResIn, memReadValIn, destIn,
                          WB_EN,    MEM_R_EN,    ALURes,   memReadVal,   dest);
   input clk, rst;
-  // TO BE REGISTERED FOR ID STAGE
+
   input WB_EN_IN, MEM_R_EN_IN;
   input [4:0] destIn;
   input [31:0] ALUResIn, memReadValIn;
-  // REGISTERED VALUES FOR ID STAGE
+
   output reg WB_EN, MEM_R_EN;
   output reg [4:0] dest;
   output reg [32:0] ALURes, memReadVal;
