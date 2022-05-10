@@ -22,3 +22,5 @@ module Data_Memory(clk, rst, writeEn, readEn, address, WriteData, ReadData);
      if (writeEn==1'b1)
       DMEMORY[address]<=WriteData;   
     end        
+
+endmodule 
