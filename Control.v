@@ -43,10 +43,16 @@ always @(*) begin
 			ex = 4'b0010; 
 			end
 
-		6'b001000: begin // R type instruction
+		6'b001000: begin // I type instruction
 			wb = 2'b10;
 			m = 3'b000;
 			ex = 4'b1101;
+			end
+
+		6'b000010: begin // j instruction
+			wb = 2'b00;
+			m = 3'b100;
+			ex = 4'b0010;
 			end
 	endcase 
 end 
