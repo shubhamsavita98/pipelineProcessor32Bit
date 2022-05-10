@@ -12,6 +12,7 @@ output [3:0] EX; // RegDst bit, ALUOp 2 bits and ALUSrc bit
 
 output reg flush;
 
+
 input [5:0] Op; // 6 MSBs are read to determine the operation and bits for the other stages
 
 reg [1:0] wb;
@@ -58,12 +59,14 @@ always @(*) begin
 			end
 	endcase 
 
+
 	if(Op == 2 && m[2] == 1)begin
 		assign flush = 1;
 	end
 	else begin 
 		assign flush = 0;
 	end 
+
 end 
 
 endmodule 
