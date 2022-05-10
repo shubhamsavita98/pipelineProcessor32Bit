@@ -8,20 +8,22 @@ module Data_Memory(clk, rst, writeEn, readEn, address, WriteData, ReadData);
   reg [31:0] dataMem [0:1023];
   wire [31:0] base_address;
 
-  if (rst)
-		for (i = 0; i < 1024; i = i + 1)
-      dataMem[i] <= 0;
-  end 
+	always @(*)
+	begin 
+		if (rst)
+			for (i = 0; i < 1024; i = i + 1)
+				dataMem[i] <= 0;
+	end
 
   always @(address)
     begin
       if(readEn==1'b1)
-        readData <= DMEMORY[address] ;       
+        ReadData <= dataMem[address] ;       
     end
   always @(negedge clk)
     begin
      if (writeEn==1'b1)
-      DMEMORY[address]<=WriteData;   
+      dataMem[address]<=WriteData;   
     end        
-
+	 
 endmodule 
