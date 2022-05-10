@@ -1,6 +1,6 @@
 
 module EXstage(clk, rst, data1, Write_Data, data2, sign_extend, EX, Rs, Rt, Rd, Wb, MemR, MemW, Branch,
-		Mem_WB, read_En, write_En, Mem_Br, Zero, DataAddress, WriteData, dest);
+		Mem_WB, read_En, write_En, DataAddress, WriteData, dest);
 
 input clk, rst;
 input [31:0] data1, Write_Data, data2, sign_extend; 
@@ -35,8 +35,8 @@ mux o(Rt, Rd, EX[3], destIn);
 
 forwarding_unit p(forward_A_mux, forward_B_mux, forward_C_mux, Rs, Rt, dest, Write_Register, Mem_WB[1], RegWrite, MemW);
 
-EXE2MEM q(clk, rst, Wb, MemR, MemW, Address, data2, destIn, Zeroflag, Branch
-Mem_WB, read_En, write_En, Zero, Mem_Br, DataAddress, WriteData, dest);
+EXE2MEM q(clk, rst, Wb, MemR, MemW, Address, data2, destIn,
+Mem_WB, read_En, write_En, DataAddress, WriteData, dest);
 
 assign dataAddress = DataAddress;
 
