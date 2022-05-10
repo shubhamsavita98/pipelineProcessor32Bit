@@ -19,16 +19,21 @@ wire [1:0] forward_A_mux, forward_B_mux;
 wire forward_C_mux;
 wire [4:0] destIn;
 
+wire [5:0] funct;
+wire [3:0] alu_ctrl;
+
+assign funct = sign_extend[5:0];
+
 mux k(data2, sign_extend, EX[0], ALUData);
 
 mux_3input l(data1, Write_Data, dataAddress, forward_A_mux, in1);
 mux_3input m(ALUData, dataAddress, Write_Data, forward_B_mux, in2);
 
-
-alu32bit n(in1, in2, EX[2:1], Address, ZeroFlag);
+alu_control(EX[2:1], funct, alu_ctrl);
+alu32bit n(in1, in2, alu_ctrl, Address, ZeroFlag);
 mux o(Rt, Rd, EX[3], destIn);
 
-forwarding_unit p(forward_A_mux, forward_B_mux, forward_C_mux, Rs, Rt, dest, Write_Register, Mem_WB[1], RegWrite);
+forwarding_unit p(forward_A_mux, forward_B_mux, forward_C_mux, Rs, Rt, dest, Write_Register, Mem_WB[1], RegWrite, MemW);
 
 EXE2MEM q(clk, rst, Wb, MemR, MemW, Branch, Address, ZeroFlag, data2, destIn,
 Mem_WB, read_En, write_En, Mem_Br, DataAddress, Zero, WriteData, dest);
