@@ -6,7 +6,7 @@ wire [31:0] Next_Address_out, Instruction_out;
 
 // ID wires
 wire[31:0] Branch_Address, data1, data2;
-wire PCWrite, freeze, MemR, MemW,hzdetect,PCSrc,flush; 
+wire PCWrite, freeze, MemR, MemW; 
 wire [3:0] Ex;
 wire [1:0] Wb;
 wire [1:0] WB;

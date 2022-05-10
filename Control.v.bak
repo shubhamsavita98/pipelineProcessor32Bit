@@ -62,18 +62,12 @@ always @(*) begin
 
 
 	if(Op == 2 && m[2] == 1)begin
-		 flush = 1;
+		assign flush = 1;
 	end
 	else begin 
-		 flush = 0;
+		assign flush = 0;
 	end 
 
 end 
-
-	assign WB=wb;
-	assign M=m;
-	assign EX=ex;
-
-
 
 endmodule 

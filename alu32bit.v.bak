@@ -30,10 +30,9 @@ begin
 		
 	endcase
 
- Zeroflag = (ALUOut==32'b0)?1:0;
+assign Zeroflag = (ALUOut==32'b0)?1:0;
 
 end
-
 
 endmodule
 

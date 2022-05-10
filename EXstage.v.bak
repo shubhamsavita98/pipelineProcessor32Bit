@@ -14,7 +14,6 @@ output read_En, write_En;
 output [31:0] DataAddress, WriteData;
 output [4:0] dest;
 
-wire Zeroflag,RegWrite;
 wire [31:0] ALUData, dataAddress, in1, in2, Address;
 wire [1:0] forward_A_mux, forward_B_mux;
 wire forward_C_mux;

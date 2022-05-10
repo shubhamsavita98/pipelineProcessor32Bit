@@ -4,9 +4,9 @@ module comparator(input [31:0] in1, in2, output reg equal);
 	
 always @(*) begin
 	if (in1==in2) 
-		 equal = 1'b1;
+		assign equal = 1'b1;
 	else  
-		 equal = 1'b0;
+		assign equal = 1'b0;
 end
 endmodule
 
