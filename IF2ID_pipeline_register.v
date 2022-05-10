@@ -1,5 +1,6 @@
 
 module IF2ID (clk, rst, flush, freeze, PCIn, instructionIn, PC, instruction);
+
   input clk, rst, flush, freeze;
   input [31:0] PCIn, instructionIn;
   output reg [31:0] PC, instruction;
