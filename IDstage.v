@@ -1,7 +1,7 @@
 
 module IDstage(clk, rst, Instruction, Write_Register, RegWrite, Next_Address, Write_Data,
-		Branch_Address, PCWrite, freeze, MemR, MemW, Br, Ex, Wb, RegRs, RegRt, RegRd, Exsign_extend,
-		data1, data2, PCSrc);
+		Branch_Address, PCWrite, freeze, MemR, MemW, Ex, Wb, RegRs, RegRt, RegRd, Exsign_extend,
+		data1, data2, PCSrc, flush);
 
 input clk, rst, RegWrite;
 input [31:0] Instruction, Write_Data, Next_Address;
@@ -10,11 +10,12 @@ input [4:0] Write_Register;
 output [31:0] Branch_Address;
 output PCWrite, freeze;
 output [3:0] Ex;
-output MemR, MemW, Br;
+output MemR, MemW;
 output [4:0] RegRs, RegRt, RegRd;
 output [31:0] Exsign_extend, data1, data2;
 output [1:0] Wb;
 output PCSrc; 
+output flush;
 
 wire [5:0] Op;
 wire [4:0] Read_Register1, Read_Register2, Rt, Rd;
@@ -44,7 +45,7 @@ Register_Block e(read_data1, read_data2, Write_Data, Read_Register1, Read_Regist
 signExtend f(sign_extend_in, sign_extend);
 shift x(sign_extend, sign_extend_shift);
 BrAdder y(sign_extend_shift, Next_Address, Branch_Address);
-Control g(WB, M, EX, Op);
+Control g(WB, M, EX, flush, Op);
 
 assign op = {WB, M, EX};
 assign zero = 0;
@@ -61,9 +62,9 @@ comparator(read_data1, read_data2, Zero);
 Branch r(PCSrc, m[2], Zero);
 
 ID2EX j(clk, rst, Rd, sign_extend, read_data1, read_data2,
-ex, m[1], m[0], wb, m[2], Read_Register1, Read_Register2, 
+ex, m[1], m[0], wb, Read_Register1, Read_Register2, 
 RegRd, Exsign_extend, data1, data2,
-Ex, MemR, MemW, Wb, Br, RegRs, RegRt); //unsure of if I connected the ports right to the ID2EX module
+Ex, MemR, MemW, Wb, RegRs, RegRt); //unsure of if I connected the ports right to the ID2EX module
 // wb needs to be 2 bit width
 
 assign Rt = RegRt;

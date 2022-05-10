@@ -1,6 +1,6 @@
 
 
-module EXE2MEM (clk, rst, WB_EN_IN, MEM_R_EN_IN, MEM_W_EN_IN, ALUResIn, STValIn, destIn,Zeroflag, branch
+module EXE2MEM (clk, rst, WB_EN_IN, MEM_R_EN_IN, MEM_W_EN_IN, ALUResIn, STValIn, destIn,Zeroflag, branch,
                           WB_EN,    MEM_R_EN,    MEM_W_EN, Zero,branch_out,  ALURes,   STVal,   dest);
   input clk, rst, Zeroflag,branch;
 
