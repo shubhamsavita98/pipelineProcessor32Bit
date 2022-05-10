@@ -23,7 +23,7 @@ wire [31:0] Write_Data;
 IFstage(clk, reset, PCWrite, hzdetect, Branch_Address, PCSrc, flush, freeze, 
 Next_Address_out, Instruction_out);
 
-IDstage(clk, reset, Instruction, Write_Register, RegWrite, Next_Address, Write_Data,
+IDstage(clk, reset, Instruction, Write_Register, RegWrite, Next_Address_out, Write_Data,
 Branch_Address, PCWrite, freeze, MemR, MemW, Ex, Wb, Rs, Rt, Rd, sign_extend,
 data1, data2, PCSrc, flush);
 
