@@ -60,6 +60,7 @@ always @(*) begin
 	endcase 
 
 
+
 	if(Op == 2 && m[2] == 1)begin
 		assign flush = 1;
 	end
