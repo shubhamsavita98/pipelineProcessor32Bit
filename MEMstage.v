@@ -17,6 +17,6 @@ output [1:0] WB;
 Data_Memory s(clk, rst, write_En, read_En, DataAddress, WriteData, ReadData);
 
 MEM2WB t(clk, rst, Mem_WB, DataAddress, ReadData, dest,
-			WB_WB, WB_Address, WB_Data, Write_Register);
+			WB, WB_Address, WB_Data, Write_Register);
 
 endmodule 

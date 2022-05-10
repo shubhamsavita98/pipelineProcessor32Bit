@@ -14,7 +14,7 @@ wire [31:0] Next_Address;
 program_counter a(clk, rst, PCWrite, hzdetect, PC_Address, Instruction_Address);
 instructionMemory b(Instruction,Instruction_Address);
 PCAdder c(Instruction_Address, Next_Address); 
-mux d(Next_Address, Branch_Address, PCSrc, PC_Address); 
+mux_2input32bit d(Next_Address, Branch_Address, PCSrc, PC_Address); 
 
 IF2ID e(clk, rst, flush, freeze, Next_Address, Instruction, Next_Address_out, Instruction_out);
 

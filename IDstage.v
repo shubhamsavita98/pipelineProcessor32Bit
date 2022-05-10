@@ -22,8 +22,7 @@ wire [4:0] Read_Register1, Read_Register2, Rt, Rd;
 wire [31:0] read_data1, read_data2;
 wire [15:0] sign_extend_in;
 wire [31:0] sign_extend, sign_extend_shift;
-wire [8:0] op;
-wire zero;
+wire [8:0] op, zero;
 wire [8:0] ctrlop;
 wire [1:0] wb;
 wire [2:0] m;
@@ -48,8 +47,8 @@ BrAdder y(sign_extend_shift, Next_Address, Branch_Address);
 Control g(WB, M, EX, flush, Op);
 
 assign op = {WB, M, EX};
-assign zero = 0;
-mux h(op, zero, ctrl_mux, ctrlop);
+assign zero = 9'b0;
+mux_control9bit h(op, zero, ctrl_mux, ctrlop);
 assign wb = ctrlop[8:7];
 assign m = ctrlop[6:4];
 assign ex = ctrlop[3:0];
@@ -57,11 +56,11 @@ assign ex = ctrlop[3:0];
 hazardDetector i(ctrl_mux, PCWrite, freeze, Rt, Read_Register1, Read_Register2, MemR, rst);
 // input regRt
 
-comparator(read_data1, read_data2, Zero);
+comparator comp(read_data1, read_data2, Zero);
 
 Branch r(PCSrc, m[2], Zero);
 
-ID2EX j(clk, rst, Rd, sign_extend, read_data1, read_data2,
+ID2EXE j(clk, rst, Rd, sign_extend, read_data1, read_data2,
 ex, m[1], m[0], wb, Read_Register1, Read_Register2, 
 RegRd, Exsign_extend, data1, data2,
 Ex, MemR, MemW, Wb, RegRs, RegRt); //unsure of if I connected the ports right to the ID2EX module

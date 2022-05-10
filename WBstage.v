@@ -8,6 +8,6 @@ output [31:0] Write_Data;
 
 assign RegWrite = WB[1];
 
-mux u(WB_Data, WB_Address, WB[0], Write_Data);
+mux_2input32bit u(WB_Data, WB_Address, WB[0], Write_Data);
 
 endmodule
