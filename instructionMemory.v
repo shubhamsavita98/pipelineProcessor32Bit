@@ -3,7 +3,7 @@
 
 module instructionMemory(
 	output reg [31:0] inst_out,
-	input [31:0] inst_in);
+	input [31:0] inst_in); 
 
 reg [31:0] inst_mem[0:1023];
 

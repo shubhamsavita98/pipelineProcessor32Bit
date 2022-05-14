@@ -22,7 +22,7 @@ wire [4:0] dest, Write_Register;
 // MEM wires
 wire [31:0] Write_Data;
 
-IFstage ifs(clk, reset, PCWrite, hzdetect, Branch_Address, PCSrc, flush, freeze, 
+IFstage ifs(clk, reset, PCWrite, Branch_Address, PCSrc, flush, freeze, 
 Next_Address_out, Instruction_out);
 
 IDstage ids(clk, reset, Instruction_out, Write_Register, RegWrite, Next_Address_out, Write_Data,

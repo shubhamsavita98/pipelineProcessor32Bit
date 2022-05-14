@@ -49,7 +49,7 @@ Control Con(WB, M, EX, flush, Op);
 
 assign op = {WB, M, EX};
 assign zero = 9'b0;
-mux_control9bit h(op, zero, ctrl_mux, ctrlop);
+mux_control9bit h(zero, op, ctrl_mux, ctrlop);
 assign wb = ctrlop[8:7];
 assign m = ctrlop[6:4];
 assign ex = ctrlop[3:0];

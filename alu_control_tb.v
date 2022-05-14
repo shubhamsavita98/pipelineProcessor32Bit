@@ -1,5 +1,5 @@
 // ALU control unit test bench
-`timescale 1ns/100ps
+
 
 module alu_control_tb;
 	

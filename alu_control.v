@@ -19,7 +19,6 @@ set on less than|  10  | 101010  |  0111
 
 */
 //*****************************************************
-`timescale 1ns/100ps
 module alu_control(
        input [1:0] alu_op, // 2 bit control field
 	   input [5:0] funct, // 6 bits function field

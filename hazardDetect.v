@@ -6,6 +6,7 @@ module hazardDetector(
 		input ID_EX_memRead, reset);
 	
 
+
 always@(*) begin
 	
 	if(reset == 0) begin

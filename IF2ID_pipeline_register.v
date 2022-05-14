@@ -11,7 +11,7 @@ module IF2ID (clk, rst, flush, freeze, PCIn, instructionIn, PC, instruction);
       instruction <= 0;
     end
     else begin
-      if (~freeze) begin
+      if (freeze) begin
         if (flush) begin
           instruction <= 0;
           PC <= 0;

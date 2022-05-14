@@ -1,5 +1,5 @@
 //module testbench
-`timescale 1ns/100ps
+`timescale 1ns/10ps
 
 module mipsTestbench;
 	reg reset;
@@ -12,7 +12,8 @@ always #10 clk = ~clk;
 initial
 	begin
 		reset = 1;
+		clk = 0;
+		#10 reset = 0;
 	end
-
 
 endmodule	
