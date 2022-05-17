@@ -14,8 +14,9 @@ module program_counter(
 	begin
 		if(reset == 1'b1) 
 			out_PC <= 32'b0;
-		else if(pc_write == 1'b1)
+		else if(pc_write == 1'b1) begin
 				out_PC <= in_PC;		//Incremeted PC is assigned to out_PC
+			end	
 		else
 			none <= ~none;
 	end

@@ -29,6 +29,9 @@ initial begin
 		reg_s[6] <= 6;
 		reg_s[8] <= 7;
 		reg_s[10] <= 8;
+		reg_s[11] <= 5;
+		reg_s[19] <= 6;
+		reg_s[18] <= 9;
 
 end
 

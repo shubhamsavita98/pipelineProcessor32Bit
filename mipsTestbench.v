@@ -13,7 +13,8 @@ initial
 	begin
 		reset = 1;
 		clk = 0;
-		#10 reset = 0;
+		#20 reset = 0;
+		#500 $stop;
 	end
 
 endmodule	

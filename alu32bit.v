@@ -20,7 +20,7 @@ begin
 		
 		4'b1100: ALUOut <= ~(a | b); //NOR
 		
-		4'b1010: ALUOut <= a - b; //addi
+		4'b1010: ALUOut <= a + b; //addi
 		
 		4'b1110: ALUOut <= a / b; //div
 		

@@ -26,10 +26,14 @@ wire [3:0] alu_ctrl;
 
 assign funct = sign_extend[5:0];
 
-mux_2input32bit k(data2, sign_extend, EX[0], ALUData);
+//mux_2input32bit k(data2, sign_extend, EX[0], ALUData);
+
+mux_2input32bit k(ALUData, sign_extend, EX[0], in2);
 
 mux_3input32bit l(data1, Write_Data, dataAddress, forward_A_mux, in1);
-mux_3input32bit m(ALUData, dataAddress, Write_Data, forward_B_mux, in2);
+//mux_3input32bit m(ALUData, dataAddress, Write_Data, forward_B_mux, in2);
+
+mux_3input32bit m(data2, dataAddress, Write_Data, forward_B_mux, ALUData);
 
 alu_control aluc(EX[2:1], funct, alu_ctrl);
 alu32bit n(in1, in2, alu_ctrl, Address, ZeroFlag);

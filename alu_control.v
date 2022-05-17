@@ -28,7 +28,7 @@ module alu_control(
 always @(alu_op, funct)
 	begin
 		case(alu_op)
-			2'b00	: if(funct == 6'b000000) alu_ctrl_out <=  4'b0010; //for load and store
+			2'b00	: alu_ctrl_out <=  4'b0010; //for load and store
 			2'b01	: alu_ctrl_out <= 4'b0110;
 			2'b10	: if(funct == 6'b100000) begin alu_ctrl_out <=  4'b0010; end
 					  else if(funct == 6'b100010) begin alu_ctrl_out <=  4'b0110; end

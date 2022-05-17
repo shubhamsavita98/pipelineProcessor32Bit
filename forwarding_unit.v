@@ -13,25 +13,40 @@ always @(*)
 		if((MEM_regWrite == 1)&&(EX_MEM_reg_rd != 0)
 			&&(EX_MEM_reg_rd == ID_EX_reg_rs))
 				forward_A_mux <= 2'b10;
+		/*else if((MEM_regWrite == 1)&&(EX_MEM_reg_rd != 0)
+			&&(EX_MEM_reg_rd == ID_EX_reg_rt))
+				forward_B_mux <= 2'b10;*/
+			
+	// MEM hazard :: 
+		else if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0) 
+		&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0) && (EX_MEM_reg_rd != ID_EX_reg_rs)) 
+		&& (MEM_WB_reg_rd == ID_EX_reg_rs))
+				forward_A_mux <= 2'b01;
+		/*else if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0)
+			&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0)
+			&& (EX_MEM_reg_rd != ID_EX_reg_rt))	&& (MEM_WB_reg_rd == ID_EX_reg_rt))	
+				forward_B_mux <= 2'b01;*/
+		else
+			forward_A_mux <= 2'b00;
+			//forward_B_mux <= 2'b00;	
+
+
+
+
 		if((MEM_regWrite == 1)&&(EX_MEM_reg_rd != 0)
 			&&(EX_MEM_reg_rd == ID_EX_reg_rt))
 				forward_B_mux <= 2'b10;
-		else
-			forward_A_mux <= 2'b00;
-			forward_B_mux <= 2'b00;
 			
-	// MEM hazard :: 
-		if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0)
-			&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0)
-			&& (EX_MEM_reg_rd != ID_EX_reg_rs)) && (MEM_WB_reg_rd == ID_EX_reg_rs))
-				forward_A_mux <= 2'b01;
-		if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0)
+
+		else if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0)
 			&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0)
 			&& (EX_MEM_reg_rd != ID_EX_reg_rt))	&& (MEM_WB_reg_rd == ID_EX_reg_rt))	
 				forward_B_mux <= 2'b01;
+		
 		else
-			forward_A_mux <= 2'b00;
-			forward_B_mux <= 2'b00;		
+			forward_B_mux <= 2'b00;	
+
+			
 			
 	// for hazard in case of load immidiately followed by store
 	/* this need additional mux at the dataWrite input of Data Memory to select
@@ -41,7 +56,7 @@ always @(*)
 		if((Data_memWrite == 1)&&(MEM_WB_reg_rd != 0)
 			&&(MEM_WB_reg_rd == ID_EX_reg_rs))
 				forward_C_mux <= 1'b1;
-		if((Data_memWrite == 1)&&(MEM_WB_reg_rd != 0)
+		else if((Data_memWrite == 1)&&(MEM_WB_reg_rd != 0)
 			&&(MEM_WB_reg_rd == ID_EX_reg_rt))
 				forward_C_mux <= 1'b1;
 		else

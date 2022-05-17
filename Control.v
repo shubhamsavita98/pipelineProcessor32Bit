@@ -49,7 +49,7 @@ always @(*) begin
 		6'b001000: begin // I type instruction
 			wb = 2'b10;
 			m = 3'b000;
-			ex = 4'b1101;
+			ex = 4'b0001;
 			end
 
 		6'b000010: begin // j instruction
