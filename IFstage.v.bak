@@ -11,7 +11,6 @@ wire [31:0] PC_Address, Instruction_Address;
 wire [31:0] Instruction;
 wire [31:0] Next_Address;
 
-
 program_counter a(clk, rst, PCWrite, PC_Address, Instruction_Address);
 instructionMemory b(Instruction, Instruction_Address);
 PCAdder c(Instruction_Address, Next_Address); 
