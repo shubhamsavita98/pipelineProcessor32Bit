@@ -6,11 +6,12 @@ module hazardDetector(
 		input ID_EX_memRead, reset);
 	
 
+
 always@(*) begin
 	
 	if(reset == 0) begin
 		if((ID_EX_memRead == 1) && 
-			((ID_EX_regRt == IF_ID_regRs) || (ID_EX_regRt == IF_ID_regRt)))
+			((ID_EX_regRt == IF_ID_regRs) | (ID_EX_regRt == IF_ID_regRt)))
 			begin
 				ctrl_mux <= 0;
 				pcWrite <= 0;
