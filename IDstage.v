@@ -39,7 +39,6 @@ assign Read_Register1 = Instruction [25:21];
 assign Read_Register2 = Instruction [20:16];
 assign sign_extend_in = Instruction [15:0];
 assign Rd = Instruction [15:11];
-assign Rt = Instruction [20:16];
 
 Register_Block e(read_data1, read_data2, Write_Data, Read_Register1, Read_Register2, Write_Register, RegWrite, clk);
 signExtend f(sign_extend_in, sign_extend);

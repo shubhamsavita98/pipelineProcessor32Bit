@@ -9,34 +9,40 @@ module forwarding_unit(
 
 always @(*)
 	begin
-			
 	// EX hazard :: 
-		if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0) 
-		&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0) && (EX_MEM_reg_rd == ID_EX_reg_rs)) 
-		&& (MEM_WB_reg_rd == ID_EX_reg_rs))
-				forward_A_mux <= 2'b01;
-			
-		// MEM Hazard ::
-		else if((MEM_regWrite == 1)&&(EX_MEM_reg_rd != 0)
+		if((MEM_regWrite == 1)&&(EX_MEM_reg_rd != 0)
 			&&(EX_MEM_reg_rd == ID_EX_reg_rs))
 				forward_A_mux <= 2'b10;
-
-
-		else	
-			forward_A_mux <= 2'b00;
-
+		/*else if((MEM_regWrite == 1)&&(EX_MEM_reg_rd != 0)
+			&&(EX_MEM_reg_rd == ID_EX_reg_rt))
+				forward_B_mux <= 2'b10;*/
 			
-		// EX hazard ::
+	// MEM hazard :: 
+		else if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0) 
+		&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0) && (EX_MEM_reg_rd != ID_EX_reg_rs)) 
+		&& (MEM_WB_reg_rd == ID_EX_reg_rs))
+				forward_A_mux <= 2'b01;
+		/*else if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0)
+			&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0)
+			&& (EX_MEM_reg_rd != ID_EX_reg_rt))	&& (MEM_WB_reg_rd == ID_EX_reg_rt))	
+				forward_B_mux <= 2'b01;*/
+		else
+			forward_A_mux <= 2'b00;
+			//forward_B_mux <= 2'b00;	
+
+
+
+
 		if((MEM_regWrite == 1)&&(EX_MEM_reg_rd != 0)
 			&&(EX_MEM_reg_rd == ID_EX_reg_rt))
 				forward_B_mux <= 2'b10;
-				
-		// MEM Hazard ::
+			
+
 		else if((WB_regWrite == 1)&&(MEM_WB_reg_rd != 0)
 			&& ~(MEM_regWrite == 1 && (EX_MEM_reg_rd != 0)
-			&& (EX_MEM_reg_rd == ID_EX_reg_rt))	&& (MEM_WB_reg_rd == ID_EX_reg_rt))	
+			&& (EX_MEM_reg_rd != ID_EX_reg_rt))	&& (MEM_WB_reg_rd == ID_EX_reg_rt))	
 				forward_B_mux <= 2'b01;
-
+		
 		else
 			forward_B_mux <= 2'b00;	
 
