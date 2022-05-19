@@ -30,7 +30,7 @@ Branch_Address, PCWrite, freeze, MemR, MemW, Ex, Wb, Rs, Rt, Rd, sign_extend,
 data1, data2, PCSrc, flush);
 
 EXstage exs(clk, reset, data1, Write_Data, data2, sign_extend, Ex, Rs, Rt, Rd, Wb, MemR, MemW,
-Mem_WB, read_En, write_En, DataAddress, WriteData, dest, Write_Register);
+Mem_WB, read_En, write_En, DataAddress, WriteData, dest, Write_Register, RegWrite);
 
 MEMstage mems(clk, reset, write_En, read_En, DataAddress, WriteData, Mem_WB, dest,
 WB_Address, WB_Data, Write_Register, WB);
