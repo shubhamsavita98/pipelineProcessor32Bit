@@ -1,9 +1,9 @@
 
 module IFstage(clk, rst, PCWrite, Branch_Address, PCSrc, flush, freeze, 
-Next_Address_out, Instruction_out);
+Next_Address_out, Instruction_out, inst_mem);
 
 input clk, rst, PCWrite, flush, freeze, PCSrc;
-input [31:0] Branch_Address;
+input [31:0] Branch_Address, inst_mem;
 
 output [31:0] Next_Address_out, Instruction_out;
 
@@ -11,6 +11,8 @@ wire [31:0] PC_Address, Instruction_Address;
 wire [31:0] Instruction;
 wire [31:0] Next_Address;
 
+// instruction == inst_mem
+// output instruction_address?
 
 program_counter a(clk, rst, PCWrite, PC_Address, Instruction_Address);
 instructionMemory b(Instruction, Instruction_Address);

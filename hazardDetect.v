@@ -16,6 +16,8 @@ always@(*) begin
 				pcWrite <= 0;
 				ifid_writeReg <= 0;
 			end
+
+		
 		else begin
 				ctrl_mux <= 1;
 				pcWrite <= 1;

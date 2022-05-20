@@ -1,6 +1,8 @@
 
 module top(input reset, clk);
 
+
+
 // IF wires
 wire [31:0] Next_Address_out, Instruction_out;
 

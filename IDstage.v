@@ -53,6 +53,7 @@ assign wb = ctrlop[8:7];
 assign m = ctrlop[6:4];
 assign ex = ctrlop[3:0];
 
+// adding hazard detect for if a beq happens after an instruction updating one of its checks
 hazardDetector i(ctrl_mux, PCWrite, freeze, Rt, Read_Register1, Read_Register2, MemR, rst);
 // input regRt
 

@@ -14,7 +14,9 @@ output [4:0] Write_Register;
 output [1:0] WB;
 
 
-Data_Memory s(clk, rst, write_En, read_En, DataAddress, WriteData, ReadData);
+/*Data_Memory s(clk, rst, write_En, read_En, DataAddress, WriteData, ReadData);*/
+Data_Memory s(DataAddress[7:0], clk, WriteData, /*read_En,*/ write_En, ReadData);
+//clk, rst, write_En, read_En, DataAddress, WriteData, ReadData);
 
 MEM2WB t(clk, rst, Mem_WB, DataAddress, ReadData, dest,
 			WB, WB_Address, WB_Data, Write_Register);

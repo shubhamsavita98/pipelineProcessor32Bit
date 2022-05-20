@@ -21,18 +21,18 @@ reg [31:0] reg_s [31:0];
 initial begin
 
 		reg_s[0] <= 0;
-		reg_s[1] <= 1;
-		reg_s[2] <= 2;
-		reg_s[3] <= 3;
-		reg_s[4] <= 4;
-		reg_s[9] <= 5;
-		reg_s[6] <= 6;
-		reg_s[8] <= 7;
-		reg_s[10] <= 8;
-		reg_s[11] <= 3;
+		reg_s[1] <= 0;
+		reg_s[2] <= 0;
+		reg_s[3] <= 0;
+		reg_s[4] <= 0;
+		reg_s[9] <= 0;
+		reg_s[6] <= 0;
+		reg_s[8] <= 0;
+		reg_s[10] <= 0;
+		reg_s[11] <= 0;
 		reg_s[12] <= 0;
-		reg_s[19] <= 6;
-		reg_s[18] <= 9;
+		reg_s[19] <= 0;
+		reg_s[18] <= 0;
 
 end
 

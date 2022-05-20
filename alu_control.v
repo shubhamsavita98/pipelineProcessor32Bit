@@ -16,6 +16,7 @@ subtract        |  10  | 100010  |  0110
 AND             |  10  | 100100  |  0000
 OR              |  10  | 100101  |  0001
 set on less than|  10  | 101010  |  0111
+NOR				 |  10  | 100111  |  
 
 */
 //*****************************************************
@@ -37,6 +38,9 @@ always @(alu_op, funct)
 					  else if(funct == 6'b101010) begin alu_ctrl_out <=  4'b0111; end
 					  else if(funct == 6'b011000) begin alu_ctrl_out <=  4'b1111; end // mult
 					  else if(funct == 6'b011010) begin alu_ctrl_out <=  4'b1110; end // divide 
+					  else if(funct == 6'b100111) begin alu_ctrl_out <=  4'b1100; end // NOR
+					  else if(funct == 6'b010000) begin alu_ctrl_out <=  4'b0011; end // MFHI
+					  else if(funct == 6'b010010) begin alu_ctrl_out <=  4'b0100; end // MFLO
 			default	: alu_ctrl_out <=  4'b1111;
 	    endcase
 	end	

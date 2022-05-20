@@ -37,7 +37,7 @@ mux_3input32bit l(data1, Write_Data, dataAddress, forward_A_mux, in1);
 mux_3input32bit m(data2, Write_Data, dataAddress, forward_B_mux, ALUData);
 
 alu_control aluc(EX[2:1], funct, alu_ctrl);
-alu32bit n(in1, in2, alu_ctrl, Address, ZeroFlag);
+alu32bit n(in1, in2, alu_ctrl, Address, ZeroFlag, clk);
 mux_2input5bit o(Rt, Rd, EX[3], destIn);
 
 forwarding_unit p(forward_A_mux, forward_B_mux, forward_C_mux, Rs, Rt, dest, Write_Register, Mem_WB[1], RegWrite, MemW);
